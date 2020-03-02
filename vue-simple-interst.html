@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest using Vue</title>
+   <script src="./vue.js"></script>
+
+  
+</head>
+<style >
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+}
+body{
+     background-color: #8ff;
+ 
+}
+.heading {
+    text-align: center;
+    color: #588;
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #588;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 60px;
+    padding: 20px;
+    border-radius: 15px;
+    color: wheat;
+    text-shadow: 1px 1px #45a,-1px -1px #45a;
+    text-align: center;
+
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    background-color: wheat;
+    color: #588;
+}
+input::placeholder{
+      color: #588;
+
+}
+#display{
+  font-size: 30px;
+  color: wheat;
+}
+</style>
+<body>
+    <div class="heading">
+    <h2>Compound Interest Calculator Using Vue</h2>
+    </div>
+    <div id="app" class="container">
+        <div>
+        <label>Principal Amount</label>
+        <input class="principal" v-model.number="loan.principal" placeholder="Principal" type="number">
+        </div>
+
+        <div>
+        <label>Interest Rate</label>
+        <input type="number" class="principal" placeholder="Rate" v-model.number="loan.rate">
+        </div>
+
+        <div>
+        <label>Number of Years</label>
+        <input class="principal" placeholder="Time" type="number" v-model.number="loan.time">
+        </div>
+
+ <div>
+        <label>Repayment Per Annum</label>
+        <input class="principal" placeholder="numb" type="number" v-model.number="loan.numb">
+        </div>
+
+
+        <div id="display">
+            <span>The compound Interest is {{result}}</span>
+        </div>
+    </div>
+     <script>
+       new Vue({
+           el: '#app',
+           data: {
+               loan: {
+                   principal: '',
+                   rate: '',
+                   time: '',
+                   numb: ''
+               }
+           },
+           computed: {
+               result() {
+                let pr = this.loan.principal;
+                let rate = this.loan.rate/100;
+                let time = this.loan.time;
+               let noInterest = this.loan.numb
+                 let exponents = time*noInterest;
+       let innerBracket = rate/noInterest;
+        let base = 1 + innerBracket;
+        let solution = Math.pow(base, exponents);
+      return  (pr*(solution)).toFixed(2);
+               }
+           }
+                  })
+    </script>
+
+</body>
+</html>
+
+<!-- A = p(1+r/n)^nt
+A	=	final amount
+P	=	initial principal balance
+r	=	interest rate
+n	=	number of times interest applied per time period
+t	=	number of time periods elapsed -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
